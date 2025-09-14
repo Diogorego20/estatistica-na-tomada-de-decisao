@@ -1,0 +1,178 @@
+=== ANÁLISE ESTATÍSTICA DO EFEITO CHAMARIZ ===
+
+1. ANÁLISE DESCRITIVA
+Dimensões do dataset: 2000 14 
+
+Distribuição por cenário:
+
+Duas_opcoes Três_opcoes 
+        618        1382 
+
+Distribuição das escolhas:
+
+ Grande   Média Pequena 
+   1065     302     633 
+
+2. ANÁLISE DE ASSOCIAÇÃO (TESTE QUI-QUADRADO)
+Tabela de Contingência:
+             
+              Grande Média Pequena
+  Duas_opcoes    250     0     368
+  Três_opcoes    815   302     265
+
+Teste Qui-quadrado de Independência:
+X² = 382.4644 
+p-valor = 8.890222e-84 
+Graus de liberdade = 2 
+
+CONCLUSÃO: Há associação significativa entre cenário e escolha (p < 0.05)
+
+3. ANÁLISE DE PROPORÇÕES
+Proporções por cenário (%):
+             
+              Grande Média Pequena
+  Duas_opcoes  40.45  0.00   59.55
+  Três_opcoes  58.97 21.85   19.18
+
+Efeito Chamariz Observado:
+- Cenário com 3 opções:  58.97 % escolheram Grande
+- Cenário com 2 opções:  40.45 % escolheram Grande
+- Diferença: + 18.52  pontos percentuais
+
+4. TESTE DE PROPORÇÕES (GRANDE vs OUTRAS)
+Teste de Proporções (Grande vs Outras):
+X² = 58.0914 
+p-valor = 2.502225e-14 
+IC 95% para diferença: 0.1374 0.2329 
+
+5. REGRESSÃO LOGÍSTICA
+Modelo: P(Escolha = Grande) ~ Cenário + Idade + Gênero + Renda
+
+Resumo do Modelo:
+
+Call:
+glm(formula = escolha_grande ~ cenario_bin + idade + genero + 
+    renda_familiar, family = binomial, data = dados)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.6392  -1.2556   0.8933   1.0562   1.4566  
+
+Coefficients:
+                          Estimate Std. Error z value Pr(>|z|)    
+(Intercept)               -0.45289    0.11846  -3.823 0.000132 ***
+cenario_bin                0.75212    0.09906   7.592 3.14e-14 ***
+idade26-35                 0.15693    0.10870   1.444 0.148813    
+idade36-45                -0.06565    0.13768  -0.477 0.633482    
+idade46+                  -0.01842    0.15460  -0.119 0.905142    
+generoMasculino           -0.11734    0.09267  -1.266 0.205445    
+renda_familiar5-10 SM      0.25658    0.12632   2.031 0.042236 *  
+renda_familiarAcima 10 SM  0.58500    0.23286   2.512 0.011995 *  
+renda_familiarAté 2 SM     0.01106    0.10475   0.106 0.915944    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 2764.1  on 1999  degrees of freedom
+Residual deviance: 2690.4  on 1991  degrees of freedom
+AIC: 2708.4
+
+Number of Fisher Scoring iterations: 4
+
+
+Odds Ratios:
+              (Intercept)               cenario_bin                idade26-35 
+                   0.6358                    2.1215                    1.1699 
+               idade36-45                  idade46+           generoMasculino 
+                   0.9365                    0.9817                    0.8893 
+    renda_familiar5-10 SM renda_familiarAcima 10 SM    renda_familiarAté 2 SM 
+                   1.2925                    1.7950                    1.0111 
+
+INTERPRETAÇÃO DO EFEITO CHAMARIZ:
+- Odds Ratio para cenário com 3 opções: 2.1215 
+- Interpretação: A chance de escolher 'Grande' é 2.12 vezes maior no cenário com 3 opções
+- Aumento percentual na chance: 112.1 %
+
+6. ANÁLISE POR PERFIL DEMOGRÁFICO
+Efeito por faixa etária:
+   18-25 :
+    3 opções: 58.5 %
+    2 opções: 39.4 %
+    Diferença: 19.1 pp
+   26-35 :
+    3 opções: 61.6 %
+    2 opções: 43.7 %
+    Diferença: 18 pp
+   36-45 :
+    3 opções: 55.7 %
+    2 opções: 39.3 %
+    Diferença: 16.4 pp
+   46+ :
+    3 opções: 58.5 %
+    2 opções: 38.4 %
+    Diferença: 20.1 pp
+
+Efeito por faixa de renda:
+   2-5 SM :
+    3 opções: 58.5 %
+    2 opções: 35.3 %
+    Diferença: 23.2 pp
+   5-10 SM :
+    3 opções: 61.6 %
+    2 opções: 48.6 %
+    Diferença: 13 pp
+   Acima 10 SM :
+    3 opções: 70.5 %
+    2 opções: 51.6 %
+    Diferença: 18.9 pp
+   Até 2 SM :
+    3 opções: 56.5 %
+    2 opções: 40.4 %
+    Diferença: 16.1 pp
+
+7. ANÁLISE DE SATISFAÇÃO E VALOR GASTO
+Valor médio gasto por cenário:
+      cenario valor_gasto
+1 Duas_opcoes    14.42718
+2 Três_opcoes    16.41245
+
+Satisfação por cenário:
+             
+              Alta Baixa Média
+  Duas_opcoes 47.1  10.8  42.1
+  Três_opcoes 60.4   4.7  34.9
+
+Teste t para diferença no valor gasto:
+t = -14.8545 
+p-valor = 4.192583e-45 
+Diferença média: R$ 1.99 
+
+8. CONCLUSÕES ESTATÍSTICAS
+========================================
+EVIDÊNCIAS DO EFEITO CHAMARIZ:
+
+1. SIGNIFICÂNCIA ESTATÍSTICA:
+   - Teste Qui-quadrado: p < 0.001 (altamente significativo)
+   - Teste de proporções: p < 0.001 (altamente significativo)
+
+2. MAGNITUDE DO EFEITO:
+   - Aumento de 18.5 pontos percentuais na escolha 'Grande'
+   - Odds Ratio: 2.12 (chance 112 % maior)
+
+3. IMPACTO ECONÔMICO:
+   - Valor médio maior no cenário com 3 opções
+   - Diferença estatisticamente significativa (p < 0.001)
+
+4. ROBUSTEZ:
+   - Efeito observado em diferentes faixas etárias
+   - Efeito observado em diferentes faixas de renda
+   - Modelo logístico confirma associação controlando por covariáveis
+
+CONCLUSÃO FINAL:
+Os dados confirmam a existência do Efeito Chamariz (Decoy Effect)
+no consumo de pipoca de cinema, replicando os achados de Dan Ariely
+no contexto brasileiro. A presença da opção 'Média' aumenta
+significativamente a probabilidade de escolha da opção 'Grande'.
+
+=== FIM DA ANÁLISE ===
