@@ -1,7 +1,7 @@
 
-# 📊 Estatística na Tomada de Decisão: O Efeito de Isca
+# 📊Estatística na Tomada de Decisão: O Efeito de Isca
 
-## 🎯 Objetivo
+## 🎯Objetivo
 
 Este repositório tem como objetivo explorar como a Estatística pode ser usada para entender e modelar decisões humanas, com foco especial no **efeito de isca** — uma técnica amplamente utilizada em marketing, economia e design de produtos para influenciar escolhas.
 
