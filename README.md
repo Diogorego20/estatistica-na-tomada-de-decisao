@@ -28,4 +28,4 @@ Sinta-se à vontade para abrir issues, sugerir melhorias ou enviar pull requests
 
 ---
 
-Criado por Diogo Rego ✨
+Criado para expediência acadêmica por Diogo Rego ✨
